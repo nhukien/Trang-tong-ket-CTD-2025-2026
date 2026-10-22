@@ -4,26 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Cổng Tài liệu Điện tử Đại biểu – Đoàn TNCS HCM Trường CĐ Đắk Lắk</title>
-  <meta name="description" content="Cổng tài liệu điện tử đại biểu quét mã QR – Hội nghị tổng kết công tác Đoàn năm học 2025-2026">
+  <meta name="description" content="Cổng tài liệu điện tử đại biểu – Hội nghị tổng kết công tác Đoàn năm học 2025-2026">
 
-  <!-- Google Fonts: Inter (hỗ trợ tiếng Việt) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap&subset=vietnamese" rel="stylesheet">
-
-  <!-- FontAwesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           fontFamily: { sans: ['Inter', 'sans-serif'] },
-          colors: {
-            brand: { blue: '#0056b3', red: '#dc3545', gold: '#ffc107' }
-          }
+          colors: { brand: { blue: '#0056b3', red: '#dc3545', gold: '#ffc107' } }
         }
       }
     };
@@ -37,49 +30,32 @@
     .tab-btn.active { background: #fff; color: #0056b3; box-shadow: 0 4px 14px rgba(0,0,0,.15); }
     .panel { animation: fadeIn .35s ease; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
-    .skeleton { background: linear-gradient(90deg,#f1f5f9 25%,#e2e8f0 50%,#f1f5f9 75%); background-size: 200% 100%; animation: shimmer 1.4s infinite; }
-    @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
-    .doc-frame { min-height: 500px; }
-    @media (min-width: 768px) { .doc-frame { min-height: 700px; } }
+    .doc-frame { height: 500px; }
+    @media (min-width: 768px) { .doc-frame { height: 700px; } }
   </style>
 </head>
 
 <body class="bg-slate-100 text-slate-800 min-h-screen flex flex-col">
 
-  <!-- ============ CẤU HÌNH FILE_ID (THAY BẰNG ID THẬT TỪ GOOGLE DRIVE) ============ -->
+  <!-- ============ CẤU HÌNH ĐƯỜNG DẪN TÀI LIỆU (sửa tại đây nếu đổi tên file) ============ -->
   <script>
-    const FILE_ID_CHUONG_TRINH  = "THAY_FILE_ID_CHUONG_TRINH";   // 1.Chuong_trinh_Tong_ket_Doan_2025_2026.pdf
-    const FILE_ID_KICH_BAN      = "THAY_FILE_ID_KICH_BAN";       // Kịch bản chi tiết (.pdf)
-    const FILE_ID_BAO_CAO       = "THAY_FILE_ID_BAO_CAO";        // 3.bao_cao_tong_ket_doan_truong_2025_2026.pdf
-    const FILE_ID_PHUONG_HUONG  = "THAY_FILE_ID_PHUONG_HUONG";   // 4.phuong_huong_cong_tac_doan_2026_2027.pdf
-    const FILE_ID_GIAO_UOC      = "THAY_FILE_ID_GIAO_UOC";       // 2.giao_uoc_thi_dua_LCD_26-27.pdf
-    const FILE_ID_KHEN_THUONG   = "THAY_FILE_ID_KHEN_THUONG";    // Danh sách khen thưởng 2025-2026
-    const GOOGLE_FORM_ID        = "THAY_GOOGLE_FORM_ID";         // ID form góp ý (phần sau /forms/d/e/)
+    const DOCS = {
+      CHUONG_TRINH:  "docs/1-chuong-trinh.pdf",
+      GIAO_UOC:      "docs/2-giao-uoc.pdf",
+      BAO_CAO:       "docs/3-bao-cao-tong-ket.pdf",
+      PHUONG_HUONG:  "docs/4-phuong-huong.pdf"
+    };
   </script>
 
   <!-- ============ HEADER ============ -->
   <header class="bg-gradient-to-br from-brand-blue via-blue-700 to-brand-red text-white relative overflow-hidden">
     <div class="absolute inset-x-0 bottom-0 h-1.5 bg-brand-gold"></div>
     <div class="max-w-5xl mx-auto px-4 pt-5 pb-7">
-
-      <!-- Logo & tên cơ quan -->
-      <div class="flex items-center gap-3">
-        <img src="images/logo-doan.png" alt="Logo Đoàn TNCS Hồ Chí Minh"
-             onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'w-12 h-12 rounded-full bg-white/15 flex items-center justify-center text-xl',innerHTML:'<i class=\'fa-solid fa-flag\'></i>'}))"
-             class="w-12 h-12 object-contain bg-white rounded-full p-1 shrink-0">
-        <img src="images/logo-dlc.png" alt="Logo Trường Cao đẳng Đắk Lắk"
-             onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'w-12 h-12 rounded-full bg-white/15 flex items-center justify-center text-xl',innerHTML:'<i class=\'fa-solid fa-school\'></i>'}))"
-             class="w-12 h-12 object-contain bg-white rounded-full p-1 shrink-0">
-        <div class="min-w-0">
-          <p class="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-brand-gold leading-tight">
-            Đoàn TNCS Hồ Chí Minh – Trường Cao đẳng Đắk Lắk
-          </p>
-        </div>
-      </div>
-
-      <!-- Tiêu đề cổng -->
-      <div class="mt-5 text-center">
-        <span class="inline-flex items-center gap-2 bg-white/15 border border-white/25 rounded-full px-3 py-1 text-[11px] font-semibold tracking-wide uppercase">
+      <div class="text-center">
+        <p class="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-brand-gold leading-tight">
+          Đoàn TNCS Hồ Chí Minh – Trường Cao đẳng Đắk Lắk
+        </p>
+        <span class="mt-4 inline-flex items-center gap-2 bg-white/15 border border-white/25 rounded-full px-3 py-1 text-[11px] font-semibold tracking-wide uppercase">
           <i class="fa-solid fa-qrcode"></i> QR Code Document Portal
         </span>
         <h1 class="mt-3 text-xl sm:text-3xl font-extrabold uppercase leading-snug">
@@ -91,7 +67,6 @@
         </h2>
       </div>
 
-      <!-- Badge thời gian & địa điểm -->
       <div class="mt-5 grid gap-2 sm:grid-cols-2 max-w-3xl mx-auto">
         <div class="flex items-center gap-3 bg-white text-slate-800 rounded-xl px-4 py-3 shadow-lg">
           <div class="w-9 h-9 rounded-lg bg-brand-gold/25 text-brand-blue flex items-center justify-center shrink-0">
@@ -99,7 +74,7 @@
           </div>
           <div>
             <p class="text-[11px] uppercase font-semibold text-slate-500">Thời gian</p>
-            <p class="font-bold text-sm">16h30 – ngày 23/10/2026</p>
+            <p class="font-bold text-sm">16h00 – ngày 23/10/2026</p>
           </div>
         </div>
         <div class="flex items-center gap-3 bg-white text-slate-800 rounded-xl px-4 py-3 shadow-lg">
@@ -139,19 +114,18 @@
     </div>
   </nav>
 
-  <!-- ============ NỘI DUNG CHÍNH ============ -->
   <main class="flex-1 w-full max-w-5xl mx-auto px-3 sm:px-4 py-5">
 
-           <!-- TAB 1: CHƯƠNG TRÌNH CHI TIẾT (CÓ KHUNG) -->
+    <!-- TAB 1: CHƯƠNG TRÌNH -->
     <section id="tab1" class="panel hidden">
-     
+      <div class="bg-white rounded-2xl shadow-sm border-2 border-brand-blue p-3 sm:p-4">
         <div class="border-2 border-brand-blue rounded-xl overflow-hidden">
           <div class="px-4 py-3 bg-slate-50 border-b-2 border-brand-blue flex flex-wrap items-center justify-between gap-2">
             <h3 class="font-bold text-brand-blue"><i class="fa-solid fa-list-check mr-1"></i> Chương trình Hội nghị chi tiết</h3>
-            <button onclick="downloadFile(FILE_ID_KICH_BAN, 'Kich-ban-chi-tiet.pdf')"
-                    class="text-sm font-semibold bg-brand-red hover:bg-red-700 text-white rounded-lg px-3 py-2 shadow">
-              <i class="fa-solid fa-download mr-1"></i> Tải Kịch bản chi tiết (.PDF)
-            </button>
+            <a href="docs/1-chuong-trinh.pdf" target="_blank" download
+               class="text-sm font-semibold bg-brand-red hover:bg-red-700 text-white rounded-lg px-3 py-2 shadow">
+              <i class="fa-solid fa-download mr-1"></i> Tải chương trình (.PDF)
+            </a>
           </div>
 
           <div class="overflow-x-auto">
@@ -184,7 +158,6 @@
                   <td class="border border-slate-300 px-3 py-3">đ/c <b>Ngô Quang Vinh</b> – UVBTV TNCS Hồ Chí Minh Trường Cao đẳng Đắk Lắk</td>
                 </tr>
                 <tr class="hover:bg-blue-50/50">
-					
                   <td class="border border-slate-300 px-3 py-3 text-center font-semibold">4</td>
                   <td class="border border-slate-300 px-3 py-3">Trình bày tóm tắt Báo cáo tổng kết công tác Đoàn năm học 2025 – 2026, triển khai Chương trình năm học 2026 – 2027</td>
                   <td class="border border-slate-300 px-3 py-3 text-center font-bold text-brand-blue">16h40</td>
@@ -248,20 +221,17 @@
       <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4">
         <h3 class="font-bold text-brand-blue mb-3"><i class="fa-solid fa-file-lines mr-1"></i> Báo cáo Tổng kết công tác Đoàn 2025 – 2026</h3>
         <div class="flex flex-wrap gap-2 mb-3">
-          <button onclick="downloadFile(FILE_ID_BAO_CAO, 'Bao-cao-tong-ket-2025-2026.pdf')"
-                  class="flex-1 sm:flex-none text-sm font-semibold bg-brand-red hover:bg-red-700 text-white rounded-lg px-4 py-2.5 shadow">
+          <a href="docs/3-bao-cao-tong-ket.pdf" target="_blank" download
+             class="flex-1 sm:flex-none text-center text-sm font-semibold bg-brand-red hover:bg-red-700 text-white rounded-lg px-4 py-2.5 shadow">
             <i class="fa-solid fa-download mr-1"></i> Tải về Báo cáo Tổng kết (PDF)
-          </button>
+          </a>
           <button onclick="toggleFullscreen('wrap-bao-cao')"
                   class="flex-1 sm:flex-none text-sm font-semibold bg-brand-blue hover:bg-blue-800 text-white rounded-lg px-4 py-2.5 shadow">
             <i class="fa-solid fa-expand mr-1"></i> Xem toàn màn hình
           </button>
         </div>
-        <div id="wrap-bao-cao" class="relative rounded-xl overflow-hidden border border-slate-200 bg-slate-200">
-          <div class="absolute inset-0 skeleton"></div>
-          <iframe data-src="https://drive.google.com/file/1tnubSA983jXH84O8Fc3Mi2ncxIoG569j/preview"
-                  data-id="FILE_ID_BAO_CAO" class="doc-frame relative w-full h-[500px] md:h-[700px] bg-white"
-                  allow="autoplay" title="Báo cáo Tổng kết 2025 – 2026"></iframe>
+        <div id="wrap-bao-cao" class="rounded-xl overflow-hidden border border-slate-200 bg-slate-200">
+          <iframe src="docs/3-bao-cao-tong-ket.pdf#view=FitH" class="doc-frame w-full bg-white" title="Báo cáo Tổng kết 2025 – 2026"></iframe>
         </div>
       </div>
     </section>
@@ -271,67 +241,40 @@
       <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4">
         <h3 class="font-bold text-brand-blue mb-3"><i class="fa-solid fa-flag mr-1"></i> Phương hướng công tác Đoàn 2026 – 2027</h3>
         <div class="flex flex-wrap gap-2 mb-3">
-          <button onclick="downloadFile(FILE_ID_PHUONG_HUONG, 'Chuong-trinh-nam-hoc-2026-2027.pdf')"
-                  class="flex-1 sm:flex-none text-sm font-semibold bg-brand-red hover:bg-red-700 text-white rounded-lg px-4 py-2.5 shadow">
-            <i class="fa-solid fa-download mr-1"></i> Tải về Chương trình năm học mới (PDF)
-          </button>
+          <a href="docs/4-phuong-huong.pdf" target="_blank" download
+             class="flex-1 sm:flex-none text-center text-sm font-semibold bg-brand-red hover:bg-red-700 text-white rounded-lg px-4 py-2.5 shadow">
+            <i class="fa-solid fa-download mr-1"></i> Tải về Phương hướng năm học mới (PDF)
+          </a>
           <button onclick="toggleFullscreen('wrap-phuong-huong')"
                   class="flex-1 sm:flex-none text-sm font-semibold bg-brand-blue hover:bg-blue-800 text-white rounded-lg px-4 py-2.5 shadow">
             <i class="fa-solid fa-expand mr-1"></i> Xem toàn màn hình
           </button>
         </div>
-        <div id="wrap-phuong-huong" class="relative rounded-xl overflow-hidden border border-slate-200 bg-slate-200">
-          <div class="absolute inset-0 skeleton"></div>
-          <iframe data-src="https://drive.google.com/file/d/${FILE_ID_PHUONG_HUONG}/preview"
-                  data-id="FILE_ID_PHUONG_HUONG" class="doc-frame relative w-full h-[500px] md:h-[700px] bg-white"
-                  allow="autoplay" title="Phương hướng nhiệm vụ 2026 – 2027"></iframe>
+        <div id="wrap-phuong-huong" class="rounded-xl overflow-hidden border border-slate-200 bg-slate-200">
+          <iframe src="docs/4-phuong-huong.pdf#view=FitH" class="doc-frame w-full bg-white" title="Phương hướng nhiệm vụ 2026 – 2027"></iframe>
         </div>
       </div>
     </section>
 
     <!-- TAB 4: GIAO ƯỚC THI ĐUA -->
-    <section id="tab4" class="panel hidden space-y-4">
+    <section id="tab4" class="panel hidden">
       <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4">
         <h3 class="font-bold text-brand-blue mb-3"><i class="fa-solid fa-handshake mr-1"></i> Giao ước thi đua 2026 – 2027</h3>
-        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-4">
-          <div class="rounded-xl bg-gradient-to-br from-brand-blue to-blue-700 text-white p-4 text-center shadow">
-            <p class="text-3xl font-extrabold text-brand-gold">290</p>
-            <p class="text-xs uppercase font-semibold mt-1">Tổng điểm thi đua</p>
-          </div>
-          <div class="rounded-xl bg-white border p-4 text-center">
-            <p class="text-3xl font-extrabold text-brand-red">07</p>
-            <p class="text-xs uppercase font-semibold text-slate-500 mt-1">Đơn vị ký kết</p>
-          </div>
-          <div class="rounded-xl bg-white border p-4 text-center col-span-2 sm:col-span-1">
-            <p class="text-3xl font-extrabold text-brand-blue">4</p>
-            <p class="text-xs uppercase font-semibold text-slate-500 mt-1">Nhóm chỉ tiêu cốt lõi</p>
-          </div>
-        </div>
-        <ul class="text-sm space-y-2 mb-4">
-          <li class="flex gap-2"><i class="fa-solid fa-circle-check text-brand-gold mt-1"></i> Công tác tổ chức, xây dựng Đoàn và đội ngũ cán bộ.</li>
-          <li class="flex gap-2"><i class="fa-solid fa-circle-check text-brand-gold mt-1"></i> Phong trào học tập, rèn luyện và văn hóa – thể thao.</li>
-          <li class="flex gap-2"><i class="fa-solid fa-circle-check text-brand-gold mt-1"></i> Hoạt động tình nguyện, an sinh và bảo vệ môi trường.</li>
-          <li class="flex gap-2"><i class="fa-solid fa-circle-check text-brand-gold mt-1"></i> Chuyển đổi số và truyền thông trong công tác Đoàn.</li>
-        </ul>
-        <p class="text-xs text-slate-500 mb-3">* Tóm tắt chỉ tiêu mang tính minh họa, vui lòng đối chiếu với bản giao ước chính thức bên dưới.</p>
         <div class="flex flex-wrap gap-2 mb-3">
+          <a href="docs/2-giao-uoc.pdf" target="_blank" download
+             class="flex-1 sm:flex-none text-center text-sm font-semibold bg-brand-red hover:bg-red-700 text-white rounded-lg px-4 py-2.5 shadow">
+            <i class="fa-solid fa-download mr-1"></i> Tải bản giao ước (PDF)
+          </a>
           <button onclick="toggleFullscreen('wrap-giao-uoc')"
                   class="flex-1 sm:flex-none text-sm font-semibold bg-brand-blue hover:bg-blue-800 text-white rounded-lg px-4 py-2.5 shadow">
             <i class="fa-solid fa-expand mr-1"></i> Xem toàn màn hình
           </button>
-          <button onclick="downloadFile(FILE_ID_GIAO_UOC, 'Giao-uoc-thi-dua-2026-2027.pdf')"
-                  class="flex-1 sm:flex-none text-sm font-semibold bg-brand-red hover:bg-red-700 text-white rounded-lg px-4 py-2.5 shadow">
-            <i class="fa-solid fa-download mr-1"></i> Tải bản giao ước (PDF)
-          </button>
         </div>
-        <div id="wrap-giao-uoc" class="relative rounded-xl overflow-hidden border border-slate-200 bg-slate-200">
-          <div class="absolute inset-0 skeleton"></div>
-          <iframe data-src="https://drive.google.com/file/d/${FILE_ID_GIAO_UOC}/preview"
-                  data-id="FILE_ID_GIAO_UOC" class="doc-frame relative w-full h-[500px] md:h-[700px] bg-white"
-                  allow="autoplay" title="Giao ước thi đua 2026 – 2027"></iframe>
+        <div id="wrap-giao-uoc" class="rounded-xl overflow-hidden border border-slate-200 bg-slate-200">
+          <iframe src="docs/2-giao-uoc.pdf#view=FitH" class="doc-frame w-full bg-white" title="Giao ước thi đua 2026 – 2027"></iframe>
         </div>
         <div class="mt-4 text-xs text-slate-600 bg-slate-50 rounded-lg p-3">
-          <p class="font-semibold mb-1">Các đơn vị ký kết:</p>
+          <p class="font-semibold mb-1">Các đơn vị ký kết (07 đơn vị):</p>
           <p>LCĐ Sư phạm – Xã hội và Du lịch – Thời trang; LCĐ Cơ – Điện – Xây dựng; LCĐ Công nghệ Ô tô; LCĐ CNTT – Kế toán; LCĐ Nông – Lâm – Thú y – Thủy sản; LCĐ Tuy Hòa; Chi đoàn Cơ quan.</p>
         </div>
       </div>
@@ -341,18 +284,10 @@
     <section id="tab5" class="panel hidden">
       <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4">
         <h3 class="font-bold text-brand-blue mb-1"><i class="fa-solid fa-trophy mr-1"></i> Danh sách khen thưởng năm học 2025 – 2026</h3>
-        <p class="text-sm text-slate-500 mb-3">Tập thể và cá nhân xuất sắc.</p>
-        <div class="flex flex-wrap gap-2 mb-3">
-          <button onclick="toggleFullscreen('wrap-khen-thuong')"
-                  class="flex-1 sm:flex-none text-sm font-semibold bg-brand-blue hover:bg-blue-800 text-white rounded-lg px-4 py-2.5 shadow">
-            <i class="fa-solid fa-expand mr-1"></i> Xem toàn màn hình
-          </button>
-        </div>
-        <div id="wrap-khen-thuong" class="relative rounded-xl overflow-hidden border border-slate-200 bg-slate-200">
-          <div class="absolute inset-0 skeleton"></div>
-          <iframe data-src="https://drive.google.com/file/d/${FILE_ID_KHEN_THUONG}/preview"
-                  data-id="FILE_ID_KHEN_THUONG" class="doc-frame relative w-full h-[500px] md:h-[700px] bg-white"
-                  allow="autoplay" title="Danh sách khen thưởng"></iframe>
+        <p class="text-sm text-slate-500 mb-3">Tập thể và cá nhân xuất sắc. Thêm file PDF vào thư mục docs/ và sửa đường dẫn tại đây khi có.</p>
+        <div class="rounded-xl border border-dashed border-slate-300 bg-slate-50 p-6 text-center text-sm text-slate-500">
+          <i class="fa-solid fa-circle-info text-brand-blue text-2xl mb-2 block"></i>
+          Nội dung đang được cập nhật.
         </div>
       </div>
     </section>
@@ -362,16 +297,17 @@
       <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4">
         <h3 class="font-bold text-brand-blue mb-1"><i class="fa-solid fa-comments mr-1"></i> Đóng góp ý kiến &amp; Đặt câu hỏi</h3>
         <p class="text-sm text-slate-500 mb-3">Gửi câu hỏi, góp ý trực tiếp tới Ban Thường vụ Đoàn trường.</p>
-        <div class="rounded-xl overflow-hidden border border-slate-200 bg-slate-50">
-          <iframe id="googleForm" data-src="https://docs.google.com/forms/d/e/${GOOGLE_FORM_ID}/viewform?embedded=true"
-                  class="w-full h-[600px] md:h-[750px] bg-white" frameborder="0" marginheight="0" marginwidth="0"
-                  title="Form góp ý đại biểu"></iframe>
+        <div class="rounded-xl border border-slate-200 bg-slate-50 p-6 text-center">
+          <p class="text-sm text-slate-600 mb-3">Nhấn nút bên dưới để mở biểu mẫu góp ý.</p>
+          <a href="mailto:doantruong@dlc.edu.vn?subject=Góp%20ý%20Hội%20nghị%20Đoàn%202026"
+             class="inline-block text-sm font-semibold bg-brand-blue hover:bg-blue-800 text-white rounded-lg px-4 py-2.5 shadow">
+            <i class="fa-solid fa-envelope mr-1"></i> Gửi góp ý qua email
+          </a>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- ============ FOOTER ============ -->
   <footer class="bg-slate-900 text-slate-300 mt-6">
     <div class="max-w-5xl mx-auto px-4 py-8 grid gap-6 sm:grid-cols-2 text-sm">
       <div>
@@ -393,63 +329,24 @@
   </footer>
 
   <script>
-    /* ---------- Helpers Google Drive ---------- */
-    function isConfigured(id) { return id && !id.startsWith("THAY_"); }
-
-    function downloadFile(id, filename) {
-      if (!isConfigured(id)) { alert("Tài liệu chưa được cấu hình. Vui lòng liên hệ Ban Tổ chức."); return; }
-      // Dùng link tải trực tiếp của Google Drive
-      const a = document.createElement("a");
-      a.href = `https://drive.google.com/uc?export=download&id=${id}`;
-      a.target = "_blank";
-      a.rel = "noopener";
-      a.download = filename || "";
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-    }
-
+    /* Mở/đóng toàn màn hình cho khung xem PDF */
     function toggleFullscreen(wrapId) {
       const el = document.getElementById(wrapId);
-      const iframe = el.querySelector("iframe");
-      // Hỗ trợ trên Android/Desktop; iOS Safari sẽ mở tab mới như phương án dự phòng
-      if (el.requestFullscreen) {
-        if (document.fullscreenElement) document.exitFullscreen();
-        else el.requestFullscreen().catch(() => window.open(iframe.src, "_blank"));
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+      } else if (el.requestFullscreen) {
+        el.requestFullscreen().catch(() => window.open(el.querySelector("iframe").src, "_blank"));
       } else {
-        window.open(iframe.src, "_blank");
+        window.open(el.querySelector("iframe").src, "_blank");
       }
     }
 
-    /* ---------- Tabs (Vanilla JS, không reload) ---------- */
+    /* Chuyển tab, không reload trang */
     const buttons = document.querySelectorAll("#tabNav [data-tab]");
     const panels  = document.querySelectorAll("main > section");
 
-    function loadIframe(section) {
-      section.querySelectorAll("iframe[data-src]").forEach(f => {
-        const id = f.dataset.id;
-        // Chỉ nạp iframe khi tab được mở (tiết kiệm dữ liệu di động)
-        if (!f.src) {
-          const raw = f.dataset.src;
-          const realId = eval(id); // lấy giá trị từ biến FILE_ID_...
-          f.src = raw.replace("${" + id.replace("FILE_ID_","FILE_ID_") + "}", realId)
-                      .replace(/\$\{[^}]+\}/g, "");
-          if (!isConfigured(realId)) {
-            f.removeAttribute("src");
-            f.parentElement.querySelector(".skeleton")?.classList.remove("skeleton");
-            f.parentElement.insertAdjacentHTML("afterbegin",
-              `<div class="absolute inset-0 flex items-center justify-center text-center p-6 bg-slate-100 text-slate-500 text-sm">
-                 <span><i class="fa-solid fa-circle-info text-brand-blue text-2xl mb-2 block"></i>Chưa cấu hình ${id}</span></div>`);
-          }
-        }
-      });
-      // Gỡ hiệu ứng skeleton khi iframe tải xong
-      section.querySelectorAll("iframe").forEach(f => {
-        f.onload = () => f.parentElement.querySelector(".skeleton")?.remove();
-      });
-    }
-
     function showTab(name) {
+      if (!document.getElementById(name)) name = "tab1";
       panels.forEach(p => p.classList.toggle("hidden", p.id !== name));
       buttons.forEach(b => {
         const active = b.dataset.tab === name;
@@ -457,22 +354,12 @@
         b.classList.toggle("text-white/90", !active);
         b.setAttribute("aria-selected", active);
       });
-      const current = document.getElementById(name);
-      loadIframe(current);
-      // Nạp form Google ở tab 6
-      if (name === "tab6") {
-        const gf = document.getElementById("googleForm");
-        if (!gf.src && isConfigured(GOOGLE_FORM_ID)) gf.src = gf.dataset.src.replace(/\$\{[^}]+\}/, GOOGLE_FORM_ID);
-      }
       history.replaceState(null, "", "#" + name);
       window.scrollTo({ top: document.getElementById("tabNav").offsetTop, behavior: "smooth" });
     }
 
     buttons.forEach(b => b.addEventListener("click", () => showTab(b.dataset.tab)));
-
-    // Mở đúng tab theo đường dẫn #tabX (hữu ích khi quét QR có kèm hash)
-    const initial = location.hash.replace("#", "");
-    showTab(document.getElementById(initial) ? initial : "tab1");
+    showTab(location.hash.replace("#", "") || "tab1");
   </script>
 </body>
 </html>
